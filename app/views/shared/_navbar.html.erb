@@ -1,5 +1,5 @@
-<nav class="bg-gray-800">
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8" >
+<nav class="border-b border-b-green-400">
+  <div class="mx-auto max-w-7xl px-2">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
@@ -15,7 +15,7 @@
       </div>
       <div class="flex flex-1 items-center justify-center sm:items-center sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
-          <div data-controller="countdown" class="bg-gray-700 text-gray-50 rounded p-3 flex">
+          <div data-controller="countdown" class="border border-green-400 px-3 py-2.5">
             <span data-countdown-target="output" id="timer"></span>
           </div>
         </div>
@@ -33,7 +33,7 @@
           <%= render "user/session_manager" %>
         <% else%>
           <%= link_to "Create Account", sign_up_path, class: "text-white font-medium hover:underline mr-3" %>
-          <%= link_to "Login", sign_in_path, class: button_classes.render(color: :indigo) %>
+          <%= link_to "Login", sign_in_path, class: "" %>
         <% end %>
       </div>
     </div>
@@ -45,4 +45,4 @@
     </div>
   </div>
 </nav>
-<%= render "shared/modal" %>
+<%# <%= render "shared/modal" %>

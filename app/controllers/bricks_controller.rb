@@ -1,5 +1,6 @@
 class BricksController < ApplicationController
   before_action :set_brick, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate, only: %i[ show index ]
 
   # GET /bricks or /bricks.json
   def index
