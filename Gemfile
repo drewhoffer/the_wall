@@ -81,3 +81,5 @@ gem "bcrypt", "~> 3.1.7"
 gem "acts_as_votable"
 
 gem "whenever", require: false
+
+gem "activerecord-import", "~> 1.4"

@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+  <div data-controller='toggle'>
+    <div data-toggle-target='toggleable' class="flex items-center gap-x-6 bg-black px-6 py-2.5 border-b border-green-400 sm:px-3.5 sm:before:flex-1">
+      <p class="text-sm leading-6 text-green-400">
+        <strong class="font-semibold"><%= notice %></strong>
+      </p>
+      <div data-action='click->toggle#toggle touch->toggle#toggle' class="flex flex-1 justify-end">
+        <button type="button" class="-m-3 p-3 focus-visible:outline-offset-[-4px]">
+          <span class="sr-only">Dismiss</span>
+          <span>X</span>
+        </button>
+      </div>
+    </div>
+  </div>
+<% end %>

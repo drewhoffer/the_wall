@@ -1,10 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @brick %>
-
 <div>
   <%= link_to "Edit this brick", edit_brick_path(@brick) %> |
   <%= link_to "Back to bricks", bricks_path %>
-
   <%= button_to "Destroy this brick", @brick, method: :delete %>
 </div>

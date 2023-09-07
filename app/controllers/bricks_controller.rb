@@ -1,6 +1,6 @@
 class BricksController < ApplicationController
-  before_action :set_brick, only: %i[ show edit update destroy ]
-  skip_before_action :authenticate, only: %i[ show index ]
+  before_action :set_brick, only: %i[ show edit update destroy upvote downvote ]
+  before_action :is_logged_in, only: %i[ new create edit update delete upvote downvote ]
 
   # GET /bricks or /bricks.json
   def index
@@ -23,7 +23,7 @@ class BricksController < ApplicationController
   # POST /bricks or /bricks.json
   def create
     @brick = Brick.new(brick_params)
-
+    @brick.user = Current.user
     respond_to do |format|
       if @brick.save
         format.html { redirect_to brick_url(@brick), notice: "Brick was successfully created." }
@@ -56,6 +56,31 @@ class BricksController < ApplicationController
       format.html { redirect_to bricks_url, notice: "Brick was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+
+  def upvote
+    if @brick.voted_up_by?(Current.user)
+      @brick.unvote_by(Current.user)
+      flash[:notice] = "Vote undone"
+    else
+      @brick.upvote_by Current.user
+      flash[:notice] = "Successfully upvoted"
+    end
+    redirect_back_or_to root_path
+  end
+
+  def downvote
+    if @brick.voted_down_by?(Current.user)
+      @brick.unvote_by(Current.user)
+      flash[:notice] = "Vote undone"
+    else
+      @brick.downvote_by Current.user
+      flash[:notice] = "Successfully downvoted"
+
+    end
+    redirect_back_or_to root_path
+
   end
 
   private

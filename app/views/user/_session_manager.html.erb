@@ -1,0 +1,30 @@
+<div class="relative ml-3" data-controller="dropdown" data-action="click->dropdown#toggle click@window->dropdown#hide">
+  <div>
+    <button data-dropdown-target="button" type="button" class="flex bg-black text-sm focus:outline-none focus:ring-1 focus:ring-green-400 focus:ring-offset-1 focus:ring-offset-green-400" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+      <span class="sr-only">Open user menu</span>
+      <%= robohash_for Current.user%>
+    </button>
+  </div>
+  <div
+    class="hidden absolute right-0 z-10 mt-4 w-48 origin-top-right border bg-black border-green-400 py-1 divide-y divide-green-400 ring-black ring-opacity-5 focus:outline-none"
+    role="menu"
+    aria-orientation="vertical"
+    id="menu-dropdown-list"
+    aria-labelledby="user-menu-button"
+    tabindex="-1"
+    data-dropdown-target="menu"
+    data-transition-enter="transition ease-out duration-100"
+    data-transition-enter-start="transform opacity-0 scale-95"
+    data-transition-enter-end="transform opacity-100 scale-100"
+    data-transition-leave="transition ease-in duration-75"
+    data-transition-leave-start="transform opacity-100 scale-100"
+    data-transition-leave-end="transform opacity-0 scale-95"
+  >
+    <div class="py-1">
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledBy="navbarDropdown">
+        <li><%= link_to "New Post", new_brick_path, class:"block px-4 py-2 text-sm hover:underline"%></li>
+        <li><%= button_to "Sign out", Current.session, method: :delete, class:"block w-full text-start px-4 py-2 text-sm hover:underline"%></li>
+      </ul>
+    </div>
+  </div>
+</div>

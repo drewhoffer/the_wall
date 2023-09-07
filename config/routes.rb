@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     resource :email_verification, only: [:show, :create]
     resource :password_reset,     only: [:new, :edit, :create, :update]
   end
-  resources :bricks
+  resources :bricks do
+    member do
+      put "upvote", to: "bricks#upvote"
+      put "downvote", to: "bricks#downvote"
+    end
+  end
   root "bricks#index"
 end
